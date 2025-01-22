@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Category } from '../types';
+import { Category, Product } from '../types';
 import { categories } from '../data/categories';
 import { categoryImages } from '../data/categoryImages';
 import { products } from '../data/products';
@@ -8,7 +8,7 @@ import ProductCard from './ProductCard';
 interface CategoryGridProps {
   selectedCategory: Category | null;
   onSelectCategory: (category: Category | null) => void;
-  onAddToCart: (product: any) => void;
+  onAddToCart: (product: Product) => void;
 }
 
 export default function CategoryGrid({ selectedCategory, onSelectCategory, onAddToCart }: CategoryGridProps) {

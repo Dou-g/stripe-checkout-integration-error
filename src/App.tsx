@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 export default function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -64,6 +65,8 @@ export default function App() {
         return <AboutPage />;
       case 'contact':
         return <ContactPage />;
+      case 'payment-success':
+        return <PaymentSuccess onNavigate={setCurrentPage} />;
       default:
         return null;
     }
@@ -76,6 +79,7 @@ export default function App() {
         onCartClick={() => setIsCartOpen(true)}
         onNavigate={setCurrentPage}
         currentPage={currentPage}
+        onLoginClick={() => console.log('Login clicked')}
         showHero={currentPage === 'home'}
       />
       

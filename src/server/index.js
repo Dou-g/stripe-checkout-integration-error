@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2023-10-16'
+  apiVersion: '2023-10-16',
 });
 
 app.use(cors());
@@ -16,21 +16,33 @@ app.use(express.json());
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
     const { items } = req.body;
-    
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: items.map(item => ({
+
+    if (!items || !Array.isArray(items)) {
+      throw new Error('Invalid items array');
+    }
+
+    const lineItems = items.map(item => {
+      const price = Number(item.price);
+      if (isNaN(price) || price <= 0) {
+        throw new Error(`Invalid price for item: ${item.name}`);
+      }
+      return {
         price_data: {
-          currency: 'usd',
+          currency: 'xof',
           product_data: {
             name: item.name,
             description: item.description,
             images: [item.image],
           },
-          unit_amount: item.price * 100,
+          unit_amount: Math.round(price * 100), // Conversion en cents
         },
         quantity: item.quantity,
-      })),
+      };
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
       mode: 'payment',
       success_url: `${process.env.CLIENT_URL}/payment-success`,
       cancel_url: `${process.env.CLIENT_URL}/payment-cancel`,

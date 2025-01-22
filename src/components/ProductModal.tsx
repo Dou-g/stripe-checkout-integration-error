@@ -8,7 +8,11 @@ interface ProductModalProps {
   onAddToCart: (product: Product) => void;
 }
 
-export default function ProductModal({ product, onClose, onAddToCart }: ProductModalProps) {
+const formatPrice = (price: number) => {
+  return `${price.toLocaleString()} XOF`;
+}
+
+;export default function ProductModal({ product, onClose, onAddToCart }: ProductModalProps) {
   // Désactiver le défilement du body quand la modale est ouverte
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -40,7 +44,7 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
             <h2 className="text-2xl font-bold text-gray-900 mb-2">{product.name}</h2>
             <p className="text-gray-600 mb-4">{product.description}</p>
             <p className="text-3xl font-bold text-gray-900 mb-6">
-              {product.price.toFixed(2)} $
+              {formatPrice(product.price)}
             </p>
             <button
               onClick={() => {

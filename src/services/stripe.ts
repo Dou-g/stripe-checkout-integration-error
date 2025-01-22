@@ -3,12 +3,18 @@ import { loadStripe } from '@stripe/stripe-js';
 // Remplacer par votre clé publique Stripe
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
+interface CartItem {
+  id: number;
+  quantity: number;
+  // Add other properties as needed
+}
+
 export async function createPaymentSession(cartItems: CartItem[]) {
   try {
     const stripe = await stripePromise;
     if (!stripe) throw new Error('Stripe not loaded');
 
-    const response = await fetch('/api/create-checkout-session', {
+    const response = await fetch('http://localhost:3000/api/create-checkout-session', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
