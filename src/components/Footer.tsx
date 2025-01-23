@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 interface FooterProps {
@@ -77,7 +77,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </li>
                 <li>
                   <button 
-                    onClick={() => handleNavigate('shop', 'new-arrivals')}
+                    onClick={() => handleNavigate('home', 'new-arrivals')}
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
                   >
                     Nouveautés
@@ -110,10 +110,10 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </li>
                 <li>
                   <button 
-                    onClick={() => handleNavigate('about', 'our-commitments')}
+                    onClick={() => handleNavigate('about', 'our-team')}
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
                   >
-                    Nos Engagements
+                    Notre équipe
                   </button>
                 </li>
               </ul>
@@ -157,7 +157,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </a>
               </div>
               <p className="text-gray-500 text-sm">
-                © 2024 BoutiqueFR. Tous droits réservés.
+                © 2024 BG. Tous droits réservés.
               </p>
             </div>
           </div>

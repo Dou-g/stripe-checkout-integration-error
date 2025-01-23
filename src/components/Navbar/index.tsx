@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import {useState, useEffect } from 'react';
 import NavbarContent from './NavbarContent';
 import NavbarCarousel from './NavbarCarousel';
-import MobileMenu from './MobileMenu';
+import MobileMenu from '../MobileMenu';
 
 interface NavbarProps {
   cartItemsCount: number;

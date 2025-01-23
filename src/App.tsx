@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Product, CartItem, Category } from './types';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -73,30 +74,32 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Navbar
-        cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
-        onCartClick={() => setIsCartOpen(true)}
-        onNavigate={setCurrentPage}
-        currentPage={currentPage}
-        onLoginClick={() => console.log('Login clicked')}
-        showHero={currentPage === 'home'}
-      />
-      
-      <div className="flex-grow">
-        {renderPage()}
-      </div>
-
-      <Footer onNavigate={setCurrentPage} />
-
-      {isCartOpen && (
-        <Cart
-          items={cartItems}
-          onClose={() => setIsCartOpen(false)}
-          onUpdateQuantity={updateQuantity}
-          onRemoveItem={removeItem}
+    <Router>
+      <div className="min-h-screen bg-gray-100 flex flex-col">
+        <Navbar
+          cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+          onCartClick={() => setIsCartOpen(true)}
+          onNavigate={setCurrentPage}
+          currentPage={currentPage}
+          onLoginClick={() => console.log('Login clicked')}
+          showHero={currentPage === 'home'}
         />
-      )}
-    </div>
+        
+        <div className="flex-grow">
+          {renderPage()}
+        </div>
+
+        <Footer onNavigate={setCurrentPage} />
+
+        {isCartOpen && (
+          <Cart
+            items={cartItems}
+            onClose={() => setIsCartOpen(false)}
+            onUpdateQuantity={updateQuantity}
+            onRemoveItem={removeItem}
+          />
+        )}
+      </div>
+    </Router>
   );
 }

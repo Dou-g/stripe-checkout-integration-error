@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 import { Menu } from 'lucide-react';
-import DesktopMenu from './DesktopMenu';
-import UserMenu from './UserMenu';
+import DesktopMenu from '../DesktopMenu';
+import UserMenu from '../UserMenu';
 
 interface NavbarContentProps {
   cartItemsCount: number;
@@ -25,7 +25,7 @@ export default function NavbarContent({
       isScrolled ? 'bg-black/50 backdrop-blur-sm' : ''
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-16"> {/* Réduire la hauteur ici */}
           <div className="flex items-center">
             <button
               onClick={onMobileMenuOpen}
@@ -51,4 +51,4 @@ export default function NavbarContent({
       </div>
     </div>
   );
-}
+} 

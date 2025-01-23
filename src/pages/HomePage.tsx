@@ -12,7 +12,7 @@ interface HomePageProps {
 
 export default function HomePage({ onAddToCart, selectedCategory, onSelectCategory }: HomePageProps) {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-32">
+    <main id='home-section' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-32">
       <div id="categories" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Nos Catégories</h2>
@@ -23,7 +23,9 @@ export default function HomePage({ onAddToCart, selectedCategory, onSelectCatego
           />
         </div>
       </div>
-      <NewArrivalsSection onAddToCart={onAddToCart} />
+      <div id="new-arrivals">
+        <NewArrivalsSection onAddToCart={onAddToCart} />
+      </div>
       <PromotionsSection onAddToCart={onAddToCart} />
     </main>
   );

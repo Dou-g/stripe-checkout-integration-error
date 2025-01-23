@@ -94,7 +94,7 @@ export const products: Product[] = [
   {
     id: 11,
     name: "Boots Cuir",
-    price: 25000,
+    price: 250,
     description: "Boots en cuir véritable, style intemporel",
     image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800",
     category: "Chaussures"
@@ -122,7 +122,7 @@ export const products: Product[] = [
     name: "Sac à Dos Urban",
     price: 100,
     description: "Sac à dos moderne et fonctionnel",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a45?auto=format&fit=crop&w=800",
+    image: "https://plus.unsplash.com/premium_photo-1664110691115-790e20a41744?q=80&w=1906&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Sacs"
   },
   {

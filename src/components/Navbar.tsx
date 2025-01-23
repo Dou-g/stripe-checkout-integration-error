@@ -109,7 +109,7 @@ export default function Navbar({ cartItemsCount, onCartClick, onNavigate, curren
                       >
                         Découvrir nos produits
                       </button>
-                      <button className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-lg font-medium inline-flex items-center justify-center">
+                      <button onClick={() => onNavigate('about')} className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-lg font-medium inline-flex items-center justify-center">
                         En savoir plus
                       </button>
                     </div>

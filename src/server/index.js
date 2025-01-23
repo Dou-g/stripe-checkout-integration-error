@@ -24,7 +24,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
     const lineItems = items.map(item => {
       const price = Number(item.price);
       if (isNaN(price) || price <= 0) {
-        throw new Error(`Invalid price for item: ${item.name}`);
+        throw new Error(`Prix invalide pour l'article: ${item.name}`);
       }
       return {
         price_data: {
@@ -50,12 +50,12 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
     res.json({ sessionId: session.id });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
-    res.status(500).json({ error: 'Error creating checkout session' });
+    console.error('Erreur lors de la création de la session de paiement:', error);
+    res.status(500).json({ error: 'Erreur lors de la création de la session de paiement' });
   }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
 });

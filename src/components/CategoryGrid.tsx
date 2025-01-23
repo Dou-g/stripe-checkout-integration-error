@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef } from 'react';
 import { Category, Product } from '../types';
 import { categories } from '../data/categories';

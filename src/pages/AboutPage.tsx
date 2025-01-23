@@ -1,11 +1,11 @@
-import React from 'react';
+// import React from 'react';
 import { Users, Heart, Truck, Shield } from 'lucide-react';
 
 export default function AboutPage() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <div className="relative h-[500px]">
+      <div className="h-[500px]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -14,7 +14,7 @@ export default function AboutPage() {
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
         </div>
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center text-white">
+        <div id='our-story' className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center text-white">
           <h1 className="text-5xl font-bold mb-4">Notre Histoire</h1>
           <p className="text-xl max-w-2xl">
             Depuis 2024, BG redéfinit l'élégance camerounaise en proposant des pièces uniques qui allient tradition et modernité.
@@ -23,7 +23,7 @@ export default function AboutPage() {
       </div>
 
       {/* Values Section */}
-      <div className="py-20 bg-gray-50">
+      <div id='our-values' className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-16">Nos Valeurs</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -80,7 +80,7 @@ export default function AboutPage() {
       </div>
 
       {/* Team Section */}
-      <div className="py-20 bg-gray-50">
+      <div id='our-team' className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-16">Notre Équipe</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

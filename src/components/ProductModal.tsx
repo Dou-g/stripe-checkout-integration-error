@@ -31,7 +31,7 @@ const formatPrice = (price: number) => {
           <X className="h-6 w-6" />
         </button>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 max-h-[90vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-h-[100vh]">
           <div className="h-72 md:h-[500px]">
             <img
               src={product.image}
