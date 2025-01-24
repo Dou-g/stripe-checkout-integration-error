@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Product, CartItem, Category } from './types';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -14,7 +14,6 @@ export default function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
-  const [currentPage, setCurrentPage] = useState('home');
 
   const addToCart = (product: Product) => {
     setCartItems(items => {
@@ -44,52 +43,32 @@ export default function App() {
     setCartItems(items => items.filter(item => item.id !== id));
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return (
-          <HomePage
-            onAddToCart={addToCart}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-          />
-        );
-      case 'shop':
-        return (
-          <ShopPage
-            onAddToCart={addToCart}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-          />
-        );
-      case 'about':
-        return <AboutPage />;
-      case 'contact':
-        return <ContactPage />;
-      case 'payment-success':
-        return <PaymentSuccess onNavigate={setCurrentPage} />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <Router>
       <div className="min-h-screen bg-gray-100 flex flex-col">
         <Navbar
           cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
           onCartClick={() => setIsCartOpen(true)}
-          onNavigate={setCurrentPage}
-          currentPage={currentPage}
+          onNavigate={(page) => window.location.href = `/${page}`}
+          currentPage={window.location.pathname.substring(1)}
           onLoginClick={() => console.log('Login clicked')}
-          showHero={currentPage === 'home'}
+          showHero={window.location.pathname === '/'}
         />
         
         <div className="flex-grow">
-          {renderPage()}
+          <Routes>
+            <Route path="/payment-success" element={<PaymentSuccess onNavigate={(page) => window.location.href = `/${page}`} />} />
+            <Route path="/shop" element={<ShopPage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
+          </Routes>
         </div>
 
-        <Footer onNavigate={setCurrentPage} />
+        {location.pathname !== '/payment-success' && (
+          <Footer onNavigate={(page) => window.location.href = `/${page}`} />
+        )}
+
 
         {isCartOpen && (
           <Cart

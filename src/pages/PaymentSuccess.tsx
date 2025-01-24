@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 
 interface PaymentSuccessProps {
@@ -6,10 +7,14 @@ interface PaymentSuccessProps {
 }
 
 export default function PaymentSuccess({ onNavigate }: PaymentSuccessProps) {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const sessionId = queryParams.get('session_id');
+
   useEffect(() => {
     // Réinitialiser le panier ici si nécessaire
-  }, []);
-  
+    console.log('Session ID:', sessionId);
+  }, [sessionId]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

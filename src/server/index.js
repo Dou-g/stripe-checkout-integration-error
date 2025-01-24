@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import Stripe from 'stripe';
 import dotenv from 'dotenv';
+import webhookRoute from './webhook.js';
 
 dotenv.config();
 
@@ -12,6 +13,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/webhook', webhookRoute);
 
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
@@ -44,7 +47,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${process.env.CLIENT_URL}/payment-success`,
+      success_url: `${process.env.CLIENT_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.CLIENT_URL}/payment-cancel`,
     });
 

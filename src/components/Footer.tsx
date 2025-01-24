@@ -89,7 +89,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             {/* À propos */}
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-blue-600 tracking-wider uppercase">
-                À propos
+                A Propos
               </h3>
               <ul className="space-y-3">
                 <li>
@@ -146,13 +146,13 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="mt-16 pt-8 border-t border-gray-200">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-200">
+                <a href="#" className="text-blue-400 hover:text-blue-600 transition-colors duration-200">
                   <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-200">
-                  <Instagram className="h-6 w-6" />
+                <a href="#" className="text-pink-400 hover:text-pink-600 transition-colors duration-200 rounded">
+                  <Instagram className="h-6 w-6 " />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-200">
+                <a href="#" className="text-gray-500 hover:text-gray-600 transition-colors duration-200">
                   <Twitter className="h-6 w-6" />
                 </a>
               </div>
