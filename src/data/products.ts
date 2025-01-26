@@ -9,7 +9,7 @@ export const products: Product[] = [
     id: 1,
     name: "Montre Classic",
     price: 250,
-    description: "Montre élégante en acier inoxydable avec cadran minimaliste",
+    description: "Montre élégante en acier",
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800",
     category: "Accessoires"
   },
@@ -18,14 +18,14 @@ export const products: Product[] = [
     name: "Ceinture Cuir",
     price: 50,
     description: "Ceinture en cuir véritable avec boucle classique",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800",
+    image: "/src/images/product/accessoires/ceintures/ceinture-cuir.webp",
     category: "Accessoires"
   },
   {
     id: 3,
     name: "Lunettes de Soleil Aviator",
     price: 150,
-    description: "Lunettes de soleil style aviateur avec verres polarisés",
+    description: "Lunettes de soleil aviateur polarisés",
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800",
     category: "Accessoires"
   },
@@ -88,7 +88,7 @@ export const products: Product[] = [
     name: "Sneakers Urban",
     price: 150,
     description: "Sneakers confortables au design moderne",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800",
+    image: "/src/images/product/chaussures/homme/sneaker-rouge.avif",
     category: "Chaussures"
   },
   {
@@ -96,7 +96,7 @@ export const products: Product[] = [
     name: "Boots Cuir",
     price: 250,
     description: "Boots en cuir véritable, style intemporel",
-    image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800",
+    image: "/src/images/product/chaussures/homme/boot-cuire.avif",
     category: "Chaussures"
   },
   {
@@ -104,13 +104,77 @@ export const products: Product[] = [
     name: "Escarpins Classiques",
     price: 100,
     description: "Escarpins en cuir avec talon de 8cm",
-    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800",
+    image: "/src/images/product/chaussures/femme/escarpins.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 13,
+    name: "Nike AF1",
+    price: 150,
+    description: "Nike Air Force 1 noire et blanc tout taille",
+    image: "/src/images/product/chaussures/homme/af1-noire.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 14,
+    name: "Nike AF1 Multi-Color",
+    price: 250,
+    description: "Nike AF1 Multi-Color taille (39, 40, 41, 42, 43)",
+    image: "/src/images/product/chaussures/homme/af1-multi.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 15,
+    name: "Nike AF1",
+    price: 100,
+    description: "Nike AF1 gris et noire",
+    image: "/src/images/product/chaussures/homme/af1-gn.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 16,
+    name: "New Balance",
+    price: 150,
+    description: "Chaussure new Balance vert et noir",
+    image: "/src/images/product/chaussures/homme/new-balance.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 17,
+    name: "Air Jordan 4",
+    price: 250,
+    description: "Nike Air Jordan 4",
+    image: "/src/images/product/chaussures/homme/air-jordan-4.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 18,
+    name: "Nike Montante",
+    price: 100,
+    description: "Chaussure Nike Montante Blanc",
+    image: "/src/images/product/chaussures/homme/nike-montante.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 19,
+    name: "Adidas Campus",
+    price: 100,
+    description: "Chaussure Adidas Campus vert",
+    image: "/src/images/product/chaussures/homme/adidas-campus.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 20,
+    name: "Adidas Campus",
+    price: 100,
+    description: "Chaussure Adidas Campus Blanc",
+    image: "/src/images/product/chaussures/homme/adidas-campus-white-kuwait.avif",
     category: "Chaussures"
   },
 
   // Sacs
   {
-    id: 13,
+    id: 21,
     name: "Sac en Cuir",
     price: 150,
     description: "Sac à main en cuir véritable fait main",
@@ -118,7 +182,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 14,
+    id: 22,
     name: "Sac à Dos Urban",
     price: 100,
     description: "Sac à dos moderne et fonctionnel",
@@ -126,7 +190,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 15,
+    id: 23,
     name: "Pochette Soirée",
     price: 150,
     description: "Pochette élégante pour vos soirées",

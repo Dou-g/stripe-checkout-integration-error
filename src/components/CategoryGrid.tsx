@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Category, Product } from '../types';
 import { categories } from '../data/categories';
 import { categoryImages } from '../data/categoryImages';
@@ -14,6 +14,7 @@ interface CategoryGridProps {
 
 export default function CategoryGrid({ selectedCategory, onSelectCategory, onAddToCart }: CategoryGridProps) {
   const categoryRefs = useRef<Record<Category, HTMLDivElement | null>>({} as Record<Category, HTMLDivElement | null>);
+  const [expandedCategories, setExpandedCategories] = useState<Record<Category, boolean>>({} as Record<Category, boolean>);
 
   const scrollToCategory = (category: Category) => {
     const ref = categoryRefs.current[category];
@@ -21,6 +22,13 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
       ref.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     onSelectCategory(category);
+  };
+
+  const toggleCategory = (category: Category) => {
+    setExpandedCategories(prevState => ({
+      ...prevState,
+      [category]: !prevState[category]
+    }));
   };
 
   return (
@@ -57,14 +65,52 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products
                 .filter(product => product.category === category)
-                .map(product => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onAddToCart={onAddToCart}
-                  />
+                .slice(0, 3) // Afficher seulement les 3 premiers produits
+                .map((product, index) => (
+                  <div key={product.id} className="relative">
+                    <ProductCard
+                      product={product}
+                      onAddToCart={onAddToCart}
+                    />
+                    {index === 2 && !expandedCategories[category] && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                        <button
+                          onClick={() => toggleCategory(category)}
+                          className="text-white font-semibold flex items-center"
+                        >
+                          Voir tous les produits
+                          <span className="ml-2">▼</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 ))}
             </div>
+            {expandedCategories[category] && (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                  {products
+                    .filter(product => product.category === category)
+                    .slice(3) // Afficher les produits restants
+                    .map(product => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        onAddToCart={onAddToCart}
+                      />
+                    ))}
+                </div>
+                <div className="flex items-center justify-center mt-4">
+                  <button
+                    onClick={() => toggleCategory(category)}
+                    className="text-blue-600 font-semibold flex items-center"
+                  >
+                    Voir moins
+                    <span className="ml-2">▲</span>
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>

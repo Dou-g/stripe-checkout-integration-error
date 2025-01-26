@@ -37,6 +37,7 @@ const slides = [
 export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLoginClick }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -44,27 +45,28 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
     navigate(`/${page}`);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  const handleScroll = () => {
+    if (window.scrollY < lastScrollY) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+    setLastScrollY(window.scrollY);
+  };
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <> 
     {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-30 bg-black bg-opacity-70 transition-transform duration-300 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-30 bg-black bg-opacity-70 transition-transform duration-300 ${isScrolled ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-24">
+          <div className="flex justify-between items-center h-16"> {/* Ajustez la hauteur ici */}
             <div className="flex items-center">
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -76,7 +78,7 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
                 onClick={() => handleNavigate('home')}
                 className="ml-2 text-2xl font-bold cursor-pointer text-white hover:text-gray-200 transition-colors"
               >
-                BG
+                <img src="/src/images/logo-bg.webp" alt="Logo" className="h-8 w-auto rounded-lg" /> {/* Remplacez par le chemin de votre logo */}
               </span>
               <DesktopMenu onNavigate={handleNavigate} currentPage={currentPage} />
             </div>
@@ -110,7 +112,7 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
             ))}
           </Swiper>
 
-          {/* */}
+          {/* */} 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center text-white z-10">
             <Swiper
               spaceBetween={0}

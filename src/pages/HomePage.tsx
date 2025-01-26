@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import CategoryGrid from '../components/CategoryGrid';
 import NewArrivalsSection from '../components/NewArrivalsSection';
 import PromotionsSection from '../components/PromotionsSection';
