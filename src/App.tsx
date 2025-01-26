@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Product, CartItem, Category } from './types';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -49,23 +49,24 @@ export default function App() {
         <Navbar
           cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
           onCartClick={() => setIsCartOpen(true)}
-          onNavigate={(page) => window.location.href = `/${page}`}
           currentPage={window.location.pathname.substring(1)}
           onLoginClick={() => console.log('Login clicked')}
-          showHero={window.location.pathname === '/'}
+          showHero={window.location.pathname === '/home'}
         />
         
         <div className="flex-grow">
           <Routes>
-            <Route path="home" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
             <Route path="/shop" element={<ShopPage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/payment-success" element={<PaymentSuccess onNavigate={(page) => window.location.href = `/${page}`} />} />
+            <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
         </div>
 
-        {location.pathname !== '/payment-success' && (
+        {window.location.pathname !== '/payment-success' && (
           <Footer onNavigate={(page) => window.location.href = `/${page}`} />
         )}
 

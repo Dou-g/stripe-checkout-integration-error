@@ -12,7 +12,7 @@ export default function AboutPage() {
             backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=2000)',
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
+          <div className="absolute inset-0 bg-black bg-opacity-0" />
         </div>
         <div id='our-story' className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center text-white">
           <h1 className="text-5xl font-bold mb-4">Notre Histoire</h1>

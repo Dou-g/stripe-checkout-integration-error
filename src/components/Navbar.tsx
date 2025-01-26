@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
@@ -10,7 +11,6 @@ import UserMenu from './UserMenu';
 interface NavbarProps {
   cartItemsCount: number;
   onCartClick: () => void;
-  onNavigate: (page: string) => void;
   currentPage: string;
   onLoginClick: () => void; 
   showHero: boolean;
@@ -34,12 +34,35 @@ const slides = [
   }
 ];
 
-export default function Navbar({ cartItemsCount, onCartClick, onNavigate, currentPage, onLoginClick }: NavbarProps) {
+export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLoginClick }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigate = (page: string) => {
+    navigate(`/${page}`);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <> 
     {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-30 bg-black bg-opacity-70">
+      <nav className={`fixed top-0 left-0 right-0 z-30 bg-black bg-opacity-70 transition-transform duration-300 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
             <div className="flex items-center">
@@ -50,12 +73,12 @@ export default function Navbar({ cartItemsCount, onCartClick, onNavigate, curren
                 <Menu className="h-6 w-6" />
               </button>
               <span 
-                onClick={() => onNavigate('home')}
+                onClick={() => handleNavigate('home')}
                 className="ml-2 text-2xl font-bold cursor-pointer text-white hover:text-gray-200 transition-colors"
               >
                 BG
               </span>
-              <DesktopMenu onNavigate={onNavigate} currentPage={currentPage} />
+              <DesktopMenu onNavigate={handleNavigate} currentPage={currentPage} />
             </div>
             
             <UserMenu
@@ -67,7 +90,7 @@ export default function Navbar({ cartItemsCount, onCartClick, onNavigate, curren
         </div>
       </nav>
 
-      {currentPage === 'home' && ( // Render Swiper only on the home page
+      {location.pathname === '/home' && ( // Render Swiper only on the home page
         <div className="relative h-[600px] overflow-hidden pt-24">
           <Swiper
             spaceBetween={0}
@@ -104,12 +127,12 @@ export default function Navbar({ cartItemsCount, onCartClick, onNavigate, curren
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl">{slide.subtitle}</p>
                     <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row">
                       <button
-                        onClick={() => onNavigate('shop')}
+                        onClick={() => handleNavigate('shop')}
                         className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-lg font-medium inline-flex items-center justify-center"
                       >
                         Découvrir nos produits
                       </button>
-                      <button onClick={() => onNavigate('about')} className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-lg font-medium inline-flex items-center justify-center">
+                      <button onClick={() => handleNavigate('about')} className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-lg font-medium inline-flex items-center justify-center">
                         En savoir plus
                       </button>
                     </div>
@@ -121,7 +144,7 @@ export default function Navbar({ cartItemsCount, onCartClick, onNavigate, curren
         </div>
       )}
 
-      {currentPage !== 'home' && (
+      {location.pathname !== '/home' && (
         <div className="pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           </div>
@@ -131,7 +154,7 @@ export default function Navbar({ cartItemsCount, onCartClick, onNavigate, curren
       <MobileMenu 
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
-        onNavigate={onNavigate} // Ensure onNavigate is passed
+        onNavigate={handleNavigate} // Ensure onNavigate is passed
         currentPage={currentPage}
       />
     </>
