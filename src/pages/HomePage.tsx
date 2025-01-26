@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import CategoryGrid from '../components/CategoryGrid';
 import NewArrivalsSection from '../components/NewArrivalsSection';
 import PromotionsSection from '../components/PromotionsSection';
@@ -23,9 +23,7 @@ export default function HomePage({ onAddToCart, selectedCategory, onSelectCatego
           />
         </div>
       </div>
-      <div id="new-arrivals">
-        <NewArrivalsSection onAddToCart={onAddToCart} />
-      </div>
+      <NewArrivalsSection onAddToCart={onAddToCart} />
       <PromotionsSection onAddToCart={onAddToCart} />
     </main>
   );

@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Dispatch, SetStateAction } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 
 interface PaymentSuccessProps {
-  onNavigate: (page: string) => void;
+  onNavigate: Dispatch<SetStateAction<string>>;
 }
 
-export default function PaymentSuccess({ onNavigate }: PaymentSuccessProps) {
+const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ onNavigate }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const sessionId = queryParams.get('session_id');
@@ -30,7 +30,7 @@ export default function PaymentSuccess({ onNavigate }: PaymentSuccessProps) {
         </p>
         <div className="mt-6">
           <button
-            onClick={() => onNavigate('shop')}
+            onClick={() => onNavigate('home')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Continuer mes achats
@@ -39,4 +39,6 @@ export default function PaymentSuccess({ onNavigate }: PaymentSuccessProps) {
       </div>
     </div>
   );
-}
+};
+
+export default PaymentSuccess;

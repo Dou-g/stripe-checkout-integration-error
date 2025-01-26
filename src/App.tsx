@@ -57,18 +57,17 @@ export default function App() {
         
         <div className="flex-grow">
           <Routes>
-            <Route path="/payment-success" element={<PaymentSuccess onNavigate={(page) => window.location.href = `/${page}`} />} />
+            <Route path="home" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
             <Route path="/shop" element={<ShopPage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
+            <Route path="/payment-success" element={<PaymentSuccess onNavigate={(page) => window.location.href = `/${page}`} />} />
           </Routes>
         </div>
 
         {location.pathname !== '/payment-success' && (
           <Footer onNavigate={(page) => window.location.href = `/${page}`} />
         )}
-
 
         {isCartOpen && (
           <Cart
