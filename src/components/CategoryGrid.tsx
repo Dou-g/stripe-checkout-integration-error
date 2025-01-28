@@ -5,6 +5,7 @@ import { categories } from '../data/categories';
 import { categoryImages } from '../data/categoryImages';
 import { products } from '../data/products';
 import ProductCard from './ProductCard';
+import Modal from './CategoryModal';
 
 interface CategoryGridProps {
   selectedCategory: Category | null;
@@ -15,6 +16,7 @@ interface CategoryGridProps {
 export default function CategoryGrid({ selectedCategory, onSelectCategory, onAddToCart }: CategoryGridProps) {
   const categoryRefs = useRef<Record<Category, HTMLDivElement | null>>({} as Record<Category, HTMLDivElement | null>);
   const [expandedCategories, setExpandedCategories] = useState<Record<Category, boolean>>({} as Record<Category, boolean>);
+  const [modalCategory, setModalCategory] = useState<Category | null>(null);
 
   const scrollToCategory = (category: Category) => {
     const ref = categoryRefs.current[category];
@@ -29,6 +31,14 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
       ...prevState,
       [category]: !prevState[category]
     }));
+  };
+
+  const openModal = (category: Category) => {
+    setModalCategory(category);
+  };
+
+  const closeModal = () => {
+    setModalCategory(null);
   };
 
   return (
@@ -72,10 +82,10 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
                       product={product}
                       onAddToCart={onAddToCart}
                     />
-                    {index === 2 && !expandedCategories[category] && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                    {index === 2 && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
                         <button
-                          onClick={() => toggleCategory(category)}
+                          onClick={() => openModal(category)}
                           className="text-white font-semibold flex items-center"
                         >
                           Voir tous les produits
@@ -86,34 +96,27 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
                   </div>
                 ))}
             </div>
-            {expandedCategories[category] && (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
-                  {products
-                    .filter(product => product.category === category)
-                    .slice(3) // Afficher les produits restants
-                    .map(product => (
-                      <ProductCard
-                        key={product.id}
-                        product={product}
-                        onAddToCart={onAddToCart}
-                      />
-                    ))}
-                </div>
-                <div className="flex items-center justify-center mt-4">
-                  <button
-                    onClick={() => toggleCategory(category)}
-                    className="text-blue-600 font-semibold flex items-center"
-                  >
-                    Voir moins
-                    <span className="ml-2">▲</span>
-                  </button>
-                </div>
-              </>
-            )}
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {modalCategory && (
+        <Modal isOpen={!!modalCategory} onClose={closeModal}>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">{modalCategory}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products
+              .filter(product => product.category === modalCategory)
+              .map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={onAddToCart}
+                />
+              ))}
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

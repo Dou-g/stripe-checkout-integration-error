@@ -101,6 +101,22 @@ export const products: Product[] = [
   },
   {
     id: 12,
+    name: "Chelsea Boots Cuir",
+    price: 250,
+    description: "Boots en cuir véritable, style intemporel",
+    image: "/src/images/product/chaussures/homme/chelsea-boots-cuir.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 13,
+    name: "Timberlan Preminium 6",
+    price: 250,
+    description: "Timberlan Preminium 6 Pouces Pour femme",
+    image: "/src/images/product/chaussures/homme/timberland-preminium.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 14,
     name: "Escarpins Classiques",
     price: 100,
     description: "Escarpins en cuir avec talon de 8cm",
@@ -108,7 +124,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 13,
+    id: 15,
     name: "Nike AF1",
     price: 150,
     description: "Nike Air Force 1 noire et blanc tout taille",
@@ -116,7 +132,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 14,
+    id: 16,
     name: "Nike AF1 Multi-Color",
     price: 250,
     description: "Nike AF1 Multi-Color taille (39, 40, 41, 42, 43)",
@@ -124,7 +140,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 15,
+    id: 17,
     name: "Nike AF1",
     price: 100,
     description: "Nike AF1 gris et noire",
@@ -132,7 +148,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 16,
+    id: 18,
     name: "New Balance",
     price: 150,
     description: "Chaussure new Balance vert et noir",
@@ -140,7 +156,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 17,
+    id: 19,
     name: "Air Jordan 4",
     price: 250,
     description: "Nike Air Jordan 4",
@@ -148,7 +164,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 18,
+    id: 20,
     name: "Nike Montante",
     price: 100,
     description: "Chaussure Nike Montante Blanc",
@@ -156,7 +172,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 19,
+    id: 21,
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus vert",
@@ -164,17 +180,49 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 20,
+    id: 22,
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus Blanc",
     image: "/src/images/product/chaussures/homme/adidas-campus-white-kuwait.avif",
     category: "Chaussures"
   },
-
+  
+  {
+    id: 23,
+    name: "Chaussure Traditionnelle",
+    price: 100,
+    description: "Chaussure Traditionnelle",
+    image: "/src/images/product/chaussures/homme/tra-1.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 24,
+    name: "Chaussure Traditionnelle",
+    price: 100,
+    description: "Chaussure Traditionnelle Noir",
+    image: "/src/images/product/chaussures/homme/tra-2.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 25,
+    name: "Chaussure Traditionnelle",
+    price: 100,
+    description: "Chaussure Traditionnelle Noir",
+    image: "/src/images/product/chaussures/homme/tra-3.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 26,
+    name: "Chaussure Traditionnelle",
+    price: 100,
+    description: "Chaussure Traditionnelle Noir",
+    image: "/src/images/product/chaussures/homme/tra-4.webp",
+    category: "Chaussures"
+  },
   // Sacs
   {
-    id: 21,
+    id: 27,
     name: "Sac en Cuir",
     price: 150,
     description: "Sac à main en cuir véritable fait main",
@@ -182,7 +230,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 22,
+    id: 28,
     name: "Sac à Dos Urban",
     price: 100,
     description: "Sac à dos moderne et fonctionnel",
@@ -190,7 +238,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 23,
+    id: 29,
     name: "Pochette Soirée",
     price: 150,
     description: "Pochette élégante pour vos soirées",
