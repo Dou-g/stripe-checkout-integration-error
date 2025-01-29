@@ -18,7 +18,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden group">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden group flex flex-col h-full">
         <div className="relative">
           <div 
             onClick={() => setIsModalOpen(true)}
@@ -53,9 +53,9 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             </button>
           </div>
         </div>
-        <div className="p-4">
+        <div className="p-4 flex flex-col flex-grow">
           <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
-          <p className="mt-1 text-gray-600 text-sm">{product.description}</p>
+          <p className="mt-1 text-gray-600 text-sm flex-grow">{product.description}</p>
           <div className="mt-4 flex items-center justify-between">
             <span className="text-xl font-bold text-gray-900">
               {formatPrice(product.price)}

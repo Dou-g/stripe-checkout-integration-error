@@ -77,7 +77,7 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
                 .filter(product => product.category === category)
                 .slice(0, 3) // Afficher seulement les 3 premiers produits
                 .map((product, index) => (
-                  <div key={product.id} className="relative">
+                  <div key={product.id} className="relative flex flex-col h-full">
                     <ProductCard
                       product={product}
                       onAddToCart={onAddToCart}

@@ -41,6 +41,86 @@ export const products: Product[] = [
   },
   {
     id: 5,
+    name: "Chemise Atlas",
+    price: 100,
+    description: "Chemise Blanche à motifs Col Mao",
+    image: "/src/images/product/vetements/homme/chemises/atlas-colle-mao.webp",
+    category: "Vêtements"
+  },
+  {
+    id: 6,
+    name: "Louis Vuitton",
+    price: 100,
+    description: "Louis Vuitton Sweatshirt aquarelle",
+    image: "/src/images/product/vetements/homme/chemises/louis-water-color.webp",
+    category: "Vêtements"
+  },
+  {
+    id: 7,
+    name: "T-shirt Lyriq",
+    price: 100,
+    description: "Chemise Lyriq au couleur vert foncé, col décontracté à manches courtes, tissu plantes",
+    image: "/src/images/product/vetements/homme/chemises/lyriq.webp",
+    category: "Vêtements"
+  },
+  {
+    id: 8,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 9,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 10,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 11,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 12,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 13,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 14,
+    name: "Chemise Lin Premium",
+    price: 100,
+    description: "Chemise en lin naturel, coupe moderne",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
+    category: "Vêtements"
+  },
+  {
+    id: 15,
     name: "Robe d'Été",
     price: 75,
     description: "Robe légère en coton avec motif fleuri",
@@ -48,7 +128,7 @@ export const products: Product[] = [
     category: "Vêtements"
   },
   {
-    id: 6,
+    id: 16,
     name: "Blazer Élégant",
     price: 125,
     description: "Blazer structuré en laine mélangée",
@@ -58,7 +138,7 @@ export const products: Product[] = [
 
   // Parfums
   {
-    id: 7,
+    id: 17,
     name: "Parfum Élégance",
     price: 500,
     description: "Parfum raffiné aux notes boisées et florales",
@@ -66,7 +146,7 @@ export const products: Product[] = [
     category: "Parfums"
   },
   {
-    id: 8,
+    id: 18,
     name: "Parfum Mystique",
     price: 750,
     description: "Parfum envoûtant aux notes orientales",
@@ -74,7 +154,7 @@ export const products: Product[] = [
     category: "Parfums"
   },
   {
-    id: 9,
+    id: 19,
     name: "Parfum Ocean",
     price: 250,
     description: "Parfum frais aux notes marines et agrumes",
@@ -84,7 +164,7 @@ export const products: Product[] = [
 
   // Chaussures
   {
-    id: 10,
+    id: 20,
     name: "Sneakers Urban",
     price: 150,
     description: "Sneakers confortables au design moderne",
@@ -100,7 +180,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 12,
+    id: 22,
     name: "Chelsea Boots Cuir",
     price: 250,
     description: "Boots en cuir véritable, style intemporel",
@@ -108,7 +188,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 13,
+    id: 23,
     name: "Timberlan Preminium 6",
     price: 250,
     description: "Timberlan Preminium 6 Pouces Pour femme",
@@ -116,7 +196,15 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 14,
+    id: 24,
+    name: "Louis Vuitton Boots Hiking",
+    price: 250,
+    description: "Tige en daim, cuir et textile Semelle en caoutchouc épaisse Fabriqué en Italie Convenable sans boîte",
+    image: "/src/images/product/chaussures/homme/lv-hiking-boots.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 25,
     name: "Escarpins Classiques",
     price: 100,
     description: "Escarpins en cuir avec talon de 8cm",
@@ -124,7 +212,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 15,
+    id: 26,
     name: "Nike AF1",
     price: 150,
     description: "Nike Air Force 1 noire et blanc tout taille",
@@ -132,7 +220,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 16,
+    id: 27,
     name: "Nike AF1 Multi-Color",
     price: 250,
     description: "Nike AF1 Multi-Color taille (39, 40, 41, 42, 43)",
@@ -140,7 +228,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 17,
+    id: 28,
     name: "Nike AF1",
     price: 100,
     description: "Nike AF1 gris et noire",
@@ -148,7 +236,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 18,
+    id: 29,
     name: "New Balance",
     price: 150,
     description: "Chaussure new Balance vert et noir",
@@ -156,7 +244,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 19,
+    id: 30,
     name: "Air Jordan 4",
     price: 250,
     description: "Nike Air Jordan 4",
@@ -164,7 +252,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 20,
+    id: 31,
     name: "Nike Montante",
     price: 100,
     description: "Chaussure Nike Montante Blanc",
@@ -172,7 +260,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 21,
+    id: 32,
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus vert",
@@ -180,7 +268,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 22,
+    id: 33,
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus Blanc",
@@ -189,7 +277,7 @@ export const products: Product[] = [
   },
   
   {
-    id: 23,
+    id: 34,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle",
@@ -197,7 +285,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 24,
+    id: 35,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
@@ -205,7 +293,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 25,
+    id: 36,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
@@ -213,7 +301,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 26,
+    id: 37,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
@@ -222,7 +310,7 @@ export const products: Product[] = [
   },
   // Sacs
   {
-    id: 27,
+    id: 38,
     name: "Sac en Cuir",
     price: 150,
     description: "Sac à main en cuir véritable fait main",
@@ -230,7 +318,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 28,
+    id: 39,
     name: "Sac à Dos Urban",
     price: 100,
     description: "Sac à dos moderne et fonctionnel",
@@ -238,7 +326,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 29,
+    id: 40,
     name: "Pochette Soirée",
     price: 150,
     description: "Pochette élégante pour vos soirées",
