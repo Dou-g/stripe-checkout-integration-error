@@ -213,6 +213,30 @@ export const products: Product[] = [
   },
   {
     id: 26,
+    name: "Escarpins Cuir",
+    price: 100,
+    description: "Escarpins en cuir daim bleu marine fabriqué à la main",
+    image: "/src/images/product/chaussures/femme/escarpin-classique-cuir-daim-bleu-marine.avif",
+    category: "Chaussures"
+  },
+  {
+    id: 27,
+    name: "Escarpins Ouverte",
+    price: 100,
+    description: "Escarpins ouverte à bride noir  vernis talon 13cm grande taille 35 au 44",
+    image: "/src/images/product/chaussures/femme/escarpin-ouvert-a-bride-noir-vernis-talon-13-cm-grande-taille-35-au-44.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 28,
+    name: "Escarpins en Daim Rouge",
+    price: 100,
+    description: "Escarpins en Daim de couleur Rouge. Talons fins doublés au même ton de 10 cm pour les petites pointures du 32 au 35. Talons de 11 cm pour les grandes pointures du 42 au 45.",
+    image: "/src/images/product/chaussures/femme/ISABELANTEROJO_A05.webp",
+    category: "Chaussures"
+  },
+  {
+    id: 29,
     name: "Nike AF1",
     price: 150,
     description: "Nike Air Force 1 noire et blanc tout taille",
@@ -220,7 +244,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 27,
+    id: 30,
     name: "Nike AF1 Multi-Color",
     price: 250,
     description: "Nike AF1 Multi-Color taille (39, 40, 41, 42, 43)",
@@ -228,7 +252,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 28,
+    id: 31,
     name: "Nike AF1",
     price: 100,
     description: "Nike AF1 gris et noire",
@@ -236,7 +260,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 29,
+    id: 32,
     name: "New Balance",
     price: 150,
     description: "Chaussure new Balance vert et noir",
@@ -244,7 +268,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 30,
+    id: 33,
     name: "Air Jordan 4",
     price: 250,
     description: "Nike Air Jordan 4",
@@ -252,7 +276,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 31,
+    id: 34,
     name: "Nike Montante",
     price: 100,
     description: "Chaussure Nike Montante Blanc",
@@ -260,7 +284,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 32,
+    id: 35,
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus vert",
@@ -268,7 +292,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 33,
+    id: 36,
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus Blanc",
@@ -277,7 +301,7 @@ export const products: Product[] = [
   },
   
   {
-    id: 34,
+    id: 37,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle",
@@ -285,7 +309,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 35,
+    id: 38,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
@@ -293,7 +317,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 36,
+    id: 39,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
@@ -301,7 +325,7 @@ export const products: Product[] = [
     category: "Chaussures"
   },
   {
-    id: 37,
+    id: 40,
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
@@ -310,7 +334,7 @@ export const products: Product[] = [
   },
   // Sacs
   {
-    id: 38,
+    id: 41,
     name: "Sac en Cuir",
     price: 150,
     description: "Sac à main en cuir véritable fait main",
@@ -318,7 +342,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 39,
+    id: 42,
     name: "Sac à Dos Urban",
     price: 100,
     description: "Sac à dos moderne et fonctionnel",
@@ -326,7 +350,7 @@ export const products: Product[] = [
     category: "Sacs"
   },
   {
-    id: 40,
+    id: 43,
     name: "Pochette Soirée",
     price: 150,
     description: "Pochette élégante pour vos soirées",
