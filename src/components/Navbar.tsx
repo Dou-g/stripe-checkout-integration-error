@@ -12,8 +12,8 @@ interface NavbarProps {
   cartItemsCount: number;
   onCartClick: () => void;
   currentPage: string;
-  onLoginClick: () => void; 
   showHero: boolean;
+  onLoginClick: () => void;
 }
 
 const slides = [
@@ -34,9 +34,9 @@ const slides = [
   }
 ];
 
-export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLoginClick }: NavbarProps) {
+export default function Navbar({ cartItemsCount, onCartClick, currentPage }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(true); // Initialisez à true pour afficher la navbar au chargement
   const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,6 +61,11 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
     };
   }, [lastScrollY]);
 
+  // Afficher la navbar lorsque le panier change
+  useEffect(() => {
+    setIsScrolled(true);
+  }, [cartItemsCount]);
+
   return (
     <> 
     {/* Navigation */}
@@ -78,7 +83,7 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
                 onClick={() => handleNavigate('home')}
                 className="ml-2 text-2xl font-bold cursor-pointer text-white hover:text-gray-200 transition-colors"
               >
-                <img src="/src/images/logo-bg.webp" alt="Logo" className="h-8 w-auto rounded-lg" /> {/* Remplacez par le chemin de votre logo */}
+                <img src="/public/images/logo-bg.webp" alt="Logo" className="h-8 w-auto rounded-lg" /> {/* Remplacez par le chemin de votre logo */}
               </span>
               <DesktopMenu onNavigate={handleNavigate} currentPage={currentPage} />
             </div>
@@ -86,7 +91,7 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
             <UserMenu
               cartItemsCount={cartItemsCount}
               onCartClick={onCartClick}
-              onLoginClick={onLoginClick}
+              onLoginClick={() => navigate('/login')}
             />
           </div>
         </div>

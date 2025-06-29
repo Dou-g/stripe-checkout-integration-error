@@ -18,7 +18,7 @@ export const products: Product[] = [
     name: "Ceinture Cuir",
     price: 50,
     description: "Ceinture en cuir véritable avec boucle classique",
-    image: "/src/images/product/accessoires/ceintures/ceinture-cuir.webp",
+    image: "/public/images/product/accessoires/ceintures/ceinture-cuir.webp",
     category: "Accessoires"
   },
   {
@@ -44,7 +44,7 @@ export const products: Product[] = [
     name: "Chemise Atlas",
     price: 100,
     description: "Chemise Blanche à motifs Col Mao",
-    image: "/src/images/product/vetements/homme/chemises/atlas-colle-mao.webp",
+    image: "/public/images/product/vetements/homme/chemises/atlas-colle-mao.webp",
     category: "Vêtements"
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     name: "Louis Vuitton",
     price: 100,
     description: "Louis Vuitton Sweatshirt aquarelle",
-    image: "/src/images/product/vetements/homme/chemises/louis-water-color.webp",
+    image: "/public/images/product/vetements/homme/chemises/louis-water-color.webp",
     category: "Vêtements"
   },
   {
@@ -60,7 +60,7 @@ export const products: Product[] = [
     name: "T-shirt Lyriq",
     price: 100,
     description: "Chemise Lyriq au couleur vert foncé, col décontracté à manches courtes, tissu plantes",
-    image: "/src/images/product/vetements/homme/chemises/lyriq.webp",
+    image: "/public/images/product/vetements/homme/chemises/lyriq.webp",
     category: "Vêtements"
   },
   {
@@ -168,7 +168,7 @@ export const products: Product[] = [
     name: "Sneakers Urban",
     price: 150,
     description: "Sneakers confortables au design moderne",
-    image: "/src/images/product/chaussures/homme/sneaker-rouge.avif",
+    image: "/public/images/product/chaussures/homme/sneaker-rouge.avif",
     category: "Chaussures"
   },
   {
@@ -176,7 +176,7 @@ export const products: Product[] = [
     name: "Boots Cuir",
     price: 250,
     description: "Boots en cuir véritable, style intemporel",
-    image: "/src/images/product/chaussures/homme/boot-cuire.avif",
+    image: "/public/images/product/chaussures/homme/boot-cuire.avif",
     category: "Chaussures"
   },
   {
@@ -184,7 +184,7 @@ export const products: Product[] = [
     name: "Chelsea Boots Cuir",
     price: 250,
     description: "Boots en cuir véritable, style intemporel",
-    image: "/src/images/product/chaussures/homme/chelsea-boots-cuir.webp",
+    image: "/public/images/product/chaussures/homme/chelsea-boots-cuir.webp",
     category: "Chaussures"
   },
   {
@@ -192,7 +192,7 @@ export const products: Product[] = [
     name: "Timberlan Preminium 6",
     price: 250,
     description: "Timberlan Preminium 6 Pouces Pour femme",
-    image: "/src/images/product/chaussures/homme/timberland-preminium.webp",
+    image: "/public/images/product/chaussures/homme/timberland-preminium.webp",
     category: "Chaussures"
   },
   {
@@ -200,7 +200,7 @@ export const products: Product[] = [
     name: "Louis Vuitton Boots Hiking",
     price: 250,
     description: "Tige en daim, cuir et textile Semelle en caoutchouc épaisse Fabriqué en Italie Convenable sans boîte",
-    image: "/src/images/product/chaussures/homme/lv-hiking-boots.avif",
+    image: "/public/images/product/chaussures/homme/lv-hiking-boots.avif",
     category: "Chaussures"
   },
   {
@@ -208,7 +208,7 @@ export const products: Product[] = [
     name: "Escarpins Classiques",
     price: 100,
     description: "Escarpins en cuir avec talon de 8cm",
-    image: "/src/images/product/chaussures/femme/escarpins.avif",
+    image: "/public/images/product/chaussures/femme/escarpins.avif",
     category: "Chaussures"
   },
   {
@@ -216,7 +216,7 @@ export const products: Product[] = [
     name: "Escarpins Cuir",
     price: 100,
     description: "Escarpins en cuir daim bleu marine fabriqué à la main",
-    image: "/src/images/product/chaussures/femme/escarpin-classique-cuir-daim-bleu-marine.avif",
+    image: "/public/images/product/chaussures/femme/escarpin-classique-cuir-daim-bleu-marine.avif",
     category: "Chaussures"
   },
   {
@@ -224,7 +224,7 @@ export const products: Product[] = [
     name: "Escarpins Ouverte",
     price: 100,
     description: "Escarpins ouverte à bride noir  vernis talon 13cm grande taille 35 au 44",
-    image: "/src/images/product/chaussures/femme/escarpin-ouvert-a-bride-noir-vernis-talon-13-cm-grande-taille-35-au-44.webp",
+    image: "/public/images/product/chaussures/femme/escarpin-ouvert-a-bride-noir-vernis-talon-13-cm-grande-taille-35-au-44.webp",
     category: "Chaussures"
   },
   {
@@ -232,7 +232,7 @@ export const products: Product[] = [
     name: "Escarpins en Daim Rouge",
     price: 100,
     description: "Escarpins en Daim de couleur Rouge. Talons fins doublés au même ton de 10 cm pour les petites pointures du 32 au 35. Talons de 11 cm pour les grandes pointures du 42 au 45.",
-    image: "/src/images/product/chaussures/femme/ISABELANTEROJO_A05.webp",
+    image: "/public/images/product/chaussures/femme/ISABELANTEROJO_A05.webp",
     category: "Chaussures"
   },
   {
@@ -240,7 +240,7 @@ export const products: Product[] = [
     name: "Nike AF1",
     price: 150,
     description: "Nike Air Force 1 noire et blanc tout taille",
-    image: "/src/images/product/chaussures/homme/af1-noire.avif",
+    image: "/public/images/product/chaussures/homme/af1-noire.avif",
     category: "Chaussures"
   },
   {
@@ -248,7 +248,7 @@ export const products: Product[] = [
     name: "Nike AF1 Multi-Color",
     price: 250,
     description: "Nike AF1 Multi-Color taille (39, 40, 41, 42, 43)",
-    image: "/src/images/product/chaussures/homme/af1-multi.avif",
+    image: "/public/images/product/chaussures/homme/af1-multi.avif",
     category: "Chaussures"
   },
   {
@@ -256,7 +256,7 @@ export const products: Product[] = [
     name: "Nike AF1",
     price: 100,
     description: "Nike AF1 gris et noire",
-    image: "/src/images/product/chaussures/homme/af1-gn.avif",
+    image: "/public/images/product/chaussures/homme/af1-gn.avif",
     category: "Chaussures"
   },
   {
@@ -264,7 +264,7 @@ export const products: Product[] = [
     name: "New Balance",
     price: 150,
     description: "Chaussure new Balance vert et noir",
-    image: "/src/images/product/chaussures/homme/new-balance.avif",
+    image: "/public/images/product/chaussures/homme/new-balance.avif",
     category: "Chaussures"
   },
   {
@@ -272,7 +272,7 @@ export const products: Product[] = [
     name: "Air Jordan 4",
     price: 250,
     description: "Nike Air Jordan 4",
-    image: "/src/images/product/chaussures/homme/air-jordan-4.avif",
+    image: "/public/images/product/chaussures/homme/air-jordan-4.avif",
     category: "Chaussures"
   },
   {
@@ -280,7 +280,7 @@ export const products: Product[] = [
     name: "Nike Montante",
     price: 100,
     description: "Chaussure Nike Montante Blanc",
-    image: "/src/images/product/chaussures/homme/nike-montante.avif",
+    image: "/public/images/product/chaussures/homme/nike-montante.avif",
     category: "Chaussures"
   },
   {
@@ -288,7 +288,7 @@ export const products: Product[] = [
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus vert",
-    image: "/src/images/product/chaussures/homme/adidas-campus.avif",
+    image: "/public/images/product/chaussures/homme/adidas-campus.avif",
     category: "Chaussures"
   },
   {
@@ -296,7 +296,7 @@ export const products: Product[] = [
     name: "Adidas Campus",
     price: 100,
     description: "Chaussure Adidas Campus Blanc",
-    image: "/src/images/product/chaussures/homme/adidas-campus-white-kuwait.avif",
+    image: "/public/images/product/chaussures/homme/adidas-campus-white-kuwait.avif",
     category: "Chaussures"
   },
   
@@ -305,7 +305,7 @@ export const products: Product[] = [
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle",
-    image: "/src/images/product/chaussures/homme/tra-1.webp",
+    image: "/public/images/product/chaussures/homme/tra-1.webp",
     category: "Chaussures"
   },
   {
@@ -313,7 +313,7 @@ export const products: Product[] = [
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
-    image: "/src/images/product/chaussures/homme/tra-2.webp",
+    image: "/public/images/product/chaussures/homme/tra-2.webp",
     category: "Chaussures"
   },
   {
@@ -321,7 +321,7 @@ export const products: Product[] = [
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
-    image: "/src/images/product/chaussures/homme/tra-3.webp",
+    image: "/public/images/product/chaussures/homme/tra-3.webp",
     category: "Chaussures"
   },
   {
@@ -329,7 +329,7 @@ export const products: Product[] = [
     name: "Chaussure Traditionnelle",
     price: 100,
     description: "Chaussure Traditionnelle Noir",
-    image: "/src/images/product/chaussures/homme/tra-4.webp",
+    image: "/public/images/product/chaussures/homme/tra-4.webp",
     category: "Chaussures"
   },
   // Sacs

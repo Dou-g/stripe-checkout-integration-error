@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Product } from '../types';
 import { Plus, Heart, Share2 } from 'lucide-react';
 import ProductModal from './ProductModal';
+import { useLikedProducts } from '../context/LikedProductsContext';
 
 interface ProductCardProps {
   product: Product;
@@ -10,7 +11,8 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const { likedProducts, toggleLike } = useLikedProducts();
+  const isLiked = likedProducts.some((p) => p.id === product.id);
 
   const formatPrice = (price: number) => {
     return `${price.toLocaleString()} XOF`;
@@ -32,7 +34,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           </div>
           <div className="absolute top-2 right-2 flex flex-col gap-2">
             <button
-              onClick={() => setIsLiked(!isLiked)}
+              onClick={() => toggleLike(product)}
               className={`p-2 rounded-full ${
                 isLiked ? 'bg-red-500 text-white' : 'bg-white text-gray-600'
               } shadow-md hover:scale-110 transition-all`}

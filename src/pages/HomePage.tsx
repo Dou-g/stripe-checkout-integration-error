@@ -2,6 +2,7 @@ import React from 'react';
 import CategoryGrid from '../components/CategoryGrid';
 import NewArrivalsSection from '../components/NewArrivalsSection';
 import PromotionsSection from '../components/PromotionsSection';
+import LikedProductsSection from '../components/LikedProductsSection';
 import { Product, Category } from '../types';
 
 interface HomePageProps {
@@ -25,6 +26,7 @@ export default function HomePage({ onAddToCart, selectedCategory, onSelectCatego
       </div>
       <NewArrivalsSection onAddToCart={onAddToCart} />
       <PromotionsSection onAddToCart={onAddToCart} />
+      <LikedProductsSection onAddToCart={onAddToCart} />
     </main>
   );
 }
