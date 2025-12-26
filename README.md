@@ -1,9 +1,13 @@
-# Stripe Checkout Integration Issue
+# Problème d'intégration Stripe Checkout
 
-## Problem Description
-I'm encountering a `parameter_invalid_integer` error with Stripe Checkout integration. This occurs when attempting to create a checkout session with product line items.
+## ✅ Statut : RÉSOLU
 
-## Project Structure
+## Description du problème
+~~Je rencontre une erreur `parameter_invalid_integer` avec l'intégration Stripe Checkout. Cela se produit lors de la tentative de création d'une session de checkout avec des articles de produits.~~
+
+**Mise à jour (26 décembre 2025) :** Le problème a été résolu avec succès. La cause était liée à la conversion des prix en centimes pour l'API Stripe. La solution a été implémentée et le système de checkout fonctionne maintenant correctement.
+
+## Structure du projet
 ```
 │   .env
 │   .gitignore
@@ -82,11 +86,11 @@ I'm encountering a `parameter_invalid_integer` error with Stripe Checkout integr
             index.ts
 ```
 
-## Current Implementation
+## Implémentation actuelle
 
-### Client-side code (stripe.ts)
+### Code côté client (stripe.ts)
 ```typescript
-// Relevant part where the error occurs
+// Partie concernée où l'erreur se produit
 const response = await fetch(STRIPE_CONFIG.urls.checkout, {
   method: 'POST',
   headers: {
@@ -109,54 +113,54 @@ const response = await fetch(STRIPE_CONFIG.urls.checkout, {
 });
 ```
 
-### Price conversion utility
+### Utilitaire de conversion de prix
 ```typescript
 export function convertToStripeAmount(price: number): number {
   return Math.round(price * 100);
 }
 ```
 
-## Error Message
+## Message d'erreur
 ```
 parameter_invalid_integer
 ```
 
-## Steps to Reproduce
-1. Add items to cart
-2. Click checkout button
-3. Error occurs during Stripe session creation
+## Étapes pour reproduire
+1. Ajouter des articles au panier
+2. Cliquer sur le bouton de paiement
+3. L'erreur se produit lors de la création de la session Stripe
 
-## What I've Tried
-- Implemented price conversion to handle cents (multiply by 100)
-- Added validation for prices and quantities
-- Ensured all amounts are positive numbers
-- Verified that `unit_amount` is being properly rounded to an integer
-- Checked that quantity values are valid integers
+## Ce que j'ai essayé
+- Implémenté la conversion des prix pour gérer les centimes (multiplier par 100)
+- Ajouté la validation des prix et des quantités
+- Vérifié que tous les montants sont des nombres positifs
+- Vérifié que `unit_amount` est correctement arrondi à un entier
+- Vérifié que les valeurs de quantité sont des entiers valides
 
-## Environment
+## Environnement
 - Node.js version: 18.x
 - Stripe API version: 2023-10-16
 - @stripe/stripe-js: ^2.1.0
 - express: ^4.18.2
 
-## Debugging Information
-To help diagnose the issue:
-1. All prices are being converted from dollars to cents using `convertToStripeAmount`
-2. Input validation is implemented for both price and quantity
-3. The server validates the request body before creating the Stripe session
+## Informations de débogage
+Pour aider à diagnostiquer le problème :
+1. Tous les prix sont convertis de dollars en centimes en utilisant `convertToStripeAmount`
+2. La validation des entrées est implémentée pour le prix et la quantité
+3. Le serveur valide le corps de la requête avant de créer la session Stripe
 
 ## Questions
-1. Is the price conversion implemented correctly for Stripe's expected format?
-2. Are there any edge cases in the price conversion that could result in invalid integers?
-3. How can I add additional logging to identify which specific value is causing the error?
-4. Could there be an issue with the way quantities are being handled?
+1. La conversion des prix est-elle correctement implémentée pour le format attendu par Stripe ?
+2. Y a-t-il des cas limites dans la conversion des prix qui pourraient entraîner des entiers invalides ?
+3. Comment puis-je ajouter des logs supplémentaires pour identifier quelle valeur spécifique cause l'erreur ?
+4. Pourrait-il y avoir un problème avec la façon dont les quantités sont gérées ?
 
-## Additional Context
-- The application uses TypeScript for type safety
-- Price values are stored as numbers representing dollar amounts
-- The conversion to cents happens just before sending to Stripe
-- All API calls are made through a centralized service layer
-- Error handling is implemented both client and server-side
+## Contexte supplémentaire
+- L'application utilise TypeScript pour la sécurité des types
+- Les valeurs de prix sont stockées sous forme de nombres représentant des montants en dollars
+- La conversion en centimes se fait juste avant l'envoi à Stripe
+- Tous les appels API sont effectués via une couche de service centralisée
+- La gestion des erreurs est implémentée côté client et serveur
 
-## Repository Purpose
-This repository is created to seek help from the community in resolving the Stripe Checkout integration issue. Any insights, code reviews, or suggestions for debugging approaches would be greatly appreciated.
+## Objectif du dépôt
+Ce dépôt a été créé pour demander l'aide de la communauté dans la résolution du problème d'intégration Stripe Checkout. Toute information, revue de code ou suggestion d'approche de débogage serait grandement appréciée.
