@@ -12,7 +12,82 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ onNavigate }) => {
   const sessionId = queryParams.get('session_id');
 
   useEffect(() => {
-    // Réinitialiser le panier ici si nécessaire
+    // À la réussite du paiement, créer une commande et un achat dans le localStorage
+    try {
+      const rawItems = localStorage.getItem('lastOrderItems');
+      const items = rawItems ? JSON.parse(rawItems) as Array<{ id: number; name: string; price: number; quantity: number; image: string; }> : [];
+
+      if (items.length > 0) {
+        const now = new Date();
+        const id = String(now.getTime());
+        const orderNumber = `BG-${now.getFullYear()}-${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
+        const total = items.reduce((sum, it) => sum + (Number(it.price) * Number(it.quantity)), 0);
+
+        const userName = localStorage.getItem('userName') || 'Client BG';
+        const userPhone = localStorage.getItem('userPhone') || '+237 6XX XXX XXX';
+        const userAddress = localStorage.getItem('userAddress') || 'Adresse non renseignée';
+        const userCity = 'Douala';
+
+        // Construire la commande (OrderHistory.tsx)
+        const order = {
+          id,
+          orderNumber,
+          date: now.toISOString().substring(0, 10),
+          status: 'confirmed' as const,
+          items,
+          total,
+          shippingAddress: {
+            name: userName,
+            address: userAddress,
+            city: userCity,
+            phone: userPhone,
+          },
+          trackingNumber: undefined,
+          estimatedDelivery: new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString().substring(0, 10),
+          timeline: [
+            { date: `${now.toISOString().substring(0, 16).replace('T', ' ')}`, status: 'confirmed', description: 'Commande confirmée', completed: true },
+            { date: `${new Date(now.getTime() + 60 * 60 * 1000).toISOString().substring(0, 16).replace('T', ' ')}`, status: 'processing', description: 'Commande en préparation', completed: false },
+          ],
+        };
+
+        // Construire l'achat (MyPurchases.tsx)
+        const purchase = {
+          id,
+          date: now.toISOString().substring(0, 10),
+          items,
+          total,
+          status: 'processing' as const,
+          orderNumber,
+        };
+
+        // Persister commandes
+        try {
+          const existingOrders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+          localStorage.setItem('userOrders', JSON.stringify([order, ...existingOrders]));
+        } catch (e) {
+          console.warn('Erreur lors de la sauvegarde des commandes:', e);
+          localStorage.setItem('userOrders', JSON.stringify([order]));
+        }
+
+        // Persister achats
+        try {
+          const existingPurchases = JSON.parse(localStorage.getItem('userPurchases') || '[]');
+          localStorage.setItem('userPurchases', JSON.stringify([purchase, ...existingPurchases]));
+        } catch (e) {
+          console.warn('Erreur lors de la sauvegarde des achats:', e);
+          localStorage.setItem('userPurchases', JSON.stringify([purchase]));
+        }
+
+        // Nettoyer les items temporaires
+        localStorage.removeItem('lastOrderItems');
+
+        // Optionnel: notifier les composants si déjà chargés
+        window.dispatchEvent(new Event('authChange'));
+      }
+    } catch (e) {
+      console.error('Erreur post-paiement:', e);
+    }
+
     console.log('Session ID:', sessionId);
   }, [sessionId]);
 

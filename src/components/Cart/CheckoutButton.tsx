@@ -13,6 +13,20 @@ export default function CheckoutButton({ items, disabled }: CheckoutButtonProps)
   const handleCheckout = async () => {
     try {
       setIsLoading(true);
+      // Sauvegarder les articles du panier pour les enregistrer après le paiement
+      try {
+        // Convertir le prix en FCFA (aligné avec l'affichage du panier: prix × 100)
+        const payload = items.map(i => ({ 
+          id: i.id, 
+          name: i.name, 
+          price: i.price * 100, 
+          quantity: i.quantity, 
+          image: i.image 
+        }));
+        localStorage.setItem('lastOrderItems', JSON.stringify(payload));
+      } catch (e) {
+        console.warn('Impossible de sauvegarder les articles du panier avant paiement:', e);
+      }
       await createCheckoutSession(items);
     } catch (error) {
       console.error('Checkout error:', error);

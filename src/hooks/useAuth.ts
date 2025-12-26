@@ -2,8 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { isLoggedIn, getUserName, logoutUser } from '../services/authService';
 
 export function useAuth() {
-  const [userName, setUserName] = useState<string | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Initialiser immédiatement depuis localStorage pour éviter les flashs/redirects prématurés
+  const [userName, setUserName] = useState<string | null>(() => getUserName());
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => isLoggedIn());
   const [authTrigger, setAuthTrigger] = useState(0);
 
   const checkAuth = useCallback(() => {
