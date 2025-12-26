@@ -11,6 +11,7 @@ export default function DesktopMenu({ onNavigate, currentPage }: DesktopMenuProp
     { id: 'shop', label: 'Ma Boutique' },
     { id: 'about', label: 'A Propos' },
     { id: 'contact', label: 'Contact' },
+    { id: 'account', label: 'Mon Compte' },
   ];
 
   return (

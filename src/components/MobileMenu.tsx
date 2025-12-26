@@ -16,6 +16,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate, currentPage }:
     { id: 'shop', label: 'Ma Boutique' },
     { id: 'about', label: 'A Propos' },
     { id: 'contact', label: 'Contact' },
+    { id: 'account', label: 'Mon Compte' },
   ];
 
   const handleNavigation = (page: string) => {
