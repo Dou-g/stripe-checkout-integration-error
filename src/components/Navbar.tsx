@@ -12,7 +12,8 @@ interface NavbarProps {
   cartItemsCount: number;
   onCartClick: () => void;
   currentPage: string;
-  onLoginClick: () => void; 
+  onLoginClick: () => void;
+  onAccountClick: () => void;
   showHero: boolean;
 }
 
@@ -34,7 +35,7 @@ const slides = [
   }
 ];
 
-export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLoginClick }: NavbarProps) {
+export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLoginClick, onAccountClick }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -87,6 +88,7 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage, onLog
               cartItemsCount={cartItemsCount}
               onCartClick={onCartClick}
               onLoginClick={onLoginClick}
+              onAccountClick={onAccountClick}
             />
           </div>
         </div>
