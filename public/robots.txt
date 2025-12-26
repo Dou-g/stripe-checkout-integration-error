@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of main pages
+Allow: /home
+Allow: /shop
+Allow: /about
+Allow: /contact
+
+# Disallow admin areas (if any)
+Disallow: /admin
+Disallow: /api/
+
+# Allow images and CSS
+Allow: /src/images/
+Allow: *.css
+Allow: *.js
+
+# Crawl delay (optional)
+Crawl-delay: 1

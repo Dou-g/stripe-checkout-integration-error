@@ -9,7 +9,7 @@ interface ProductModalProps {
 }
 
 const formatPrice = (price: number) => {
-  return `${price.toLocaleString()} XOF`;
+  return `${(price * 100).toLocaleString()}`;
 }
 
 ;export default function ProductModal({ product, onClose, onAddToCart }: ProductModalProps) {
@@ -35,7 +35,7 @@ const formatPrice = (price: number) => {
           <div className="h-72 md:h-[500px]">
             <img
               src={product.image}
-              alt={product.name}
+              alt={`${product.name} - Mode africaine BG Fashion, ${product.description}`}
               className="w-full h-full object-cover"
             />
           </div>

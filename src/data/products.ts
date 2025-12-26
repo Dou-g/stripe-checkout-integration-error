@@ -8,7 +8,7 @@ export const products: Product[] = [
   {
     id: 1,
     name: "Montre Classic",
-    price: 250,
+    price: 150,
     description: "Montre élégante en acier",
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800",
     category: "Accessoires"
@@ -24,7 +24,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: "Lunettes de Soleil Aviator",
-    price: 150,
+    price: 50,
     description: "Lunettes de soleil aviateur polarisés",
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800",
     category: "Accessoires"
@@ -34,7 +34,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -58,7 +58,7 @@ export const products: Product[] = [
   {
     id: 7,
     name: "T-shirt Lyriq",
-    price: 100,
+    price: 50,
     description: "Chemise Lyriq au couleur vert foncé, col décontracté à manches courtes, tissu plantes",
     image: "/public/images/product/vetements/homme/chemises/lyriq.webp",
     category: "Vêtements"
@@ -66,7 +66,7 @@ export const products: Product[] = [
   {
     id: 8,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -74,7 +74,7 @@ export const products: Product[] = [
   {
     id: 9,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -82,7 +82,7 @@ export const products: Product[] = [
   {
     id: 10,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -90,7 +90,7 @@ export const products: Product[] = [
   {
     id: 11,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -98,7 +98,7 @@ export const products: Product[] = [
   {
     id: 12,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 60,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -106,7 +106,7 @@ export const products: Product[] = [
   {
     id: 13,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -114,7 +114,7 @@ export const products: Product[] = [
   {
     id: 14,
     name: "Chemise Lin Premium",
-    price: 100,
+    price: 50,
     description: "Chemise en lin naturel, coupe moderne",
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -130,7 +130,7 @@ export const products: Product[] = [
   {
     id: 16,
     name: "Blazer Élégant",
-    price: 125,
+    price: 100,
     description: "Blazer structuré en laine mélangée",
     image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800",
     category: "Vêtements"
@@ -140,7 +140,7 @@ export const products: Product[] = [
   {
     id: 17,
     name: "Parfum Élégance",
-    price: 500,
+    price: 50,
     description: "Parfum raffiné aux notes boisées et florales",
     image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800",
     category: "Parfums"
@@ -148,7 +148,7 @@ export const products: Product[] = [
   {
     id: 18,
     name: "Parfum Mystique",
-    price: 750,
+    price: 75,
     description: "Parfum envoûtant aux notes orientales",
     image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800",
     category: "Parfums"

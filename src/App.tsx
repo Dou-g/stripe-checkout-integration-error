@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Product, CartItem, Category } from './types';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -8,13 +8,17 @@ import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import PromotionsPage from './pages/PromotionsPage';
 import PaymentSuccess from './pages/PaymentSuccess';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import UserDashboard from './pages/UserDashboard';
 import { LikedProductsProvider } from './context/LikedProductsContext';
 
-export default function App() {
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
@@ -27,14 +31,29 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const hideFooterPaths = ['/login', '/register', '/payment-success', '/dashboard'];
-    setShowFooter(!hideFooterPaths.includes(window.location.pathname));
-  }, [window.location.pathname]);
+    const hideFooterPaths = ['/login', '/register', '/forgot-password', '/payment-success', '/dashboard'];
+    setShowFooter(!hideFooterPaths.includes(location.pathname));
+  }, [location.pathname]);
+
+  useEffect(() => {
+    // Scroll to element if hash is present
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100); // Small delay to ensure DOM is ready
+      }
+    } else {
+      // Scroll to top for pages without hash
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname, location.hash]);
 
   const addToCart = (product: Product) => {
     if (!isLoggedIn) {
       // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
-      window.location.href = '/login';
+      navigate('/login');
       return;
     }
     setCartItems(items => {
@@ -64,46 +83,59 @@ export default function App() {
     setCartItems(items => items.filter(item => item.id !== id));
   };
 
+  const handleNavigate = (page: string, sectionId?: string) => {
+    const path = `/${page}${sectionId ? `#${sectionId}` : ''}`;
+    navigate(path);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <Navbar
+        cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+        onCartClick={() => setIsCartOpen(true)}
+        currentPage={location.pathname.substring(1)}
+        onLoginClick={() => navigate('/login')}
+        showHero={location.pathname === '/home'}
+      />
+      
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
+          <Route path="/shop" element={<ShopPage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/promotions" element={<PromotionsPage onAddToCart={addToCart} />} />
+          <Route path="/payment-success" element={<PaymentSuccess onNavigate={handleNavigate} />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="*" element={<Navigate to="/home" />} />
+        </Routes>
+      </div>
+
+      {showFooter && (
+        <Footer onNavigate={handleNavigate} />
+      )}
+
+      {isCartOpen && (
+        <Cart
+          items={cartItems}
+          onClose={() => setIsCartOpen(false)}
+          onUpdateQuantity={updateQuantity}
+          onRemoveItem={removeItem}
+        />
+      )}
+    </div>
+  );
+}
+
+export default function App() {
   return (
     <LikedProductsProvider>
       <Router>
-        <div className="min-h-screen bg-gray-100 flex flex-col">
-          <Navbar
-            cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
-            onCartClick={() => setIsCartOpen(true)}
-            currentPage={window.location.pathname.substring(1)}
-            onLoginClick={() => window.location.href = '/login'}
-            showHero={window.location.pathname === '/home'}
-          />
-          
-          <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<HomePage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
-              <Route path="/shop" element={<ShopPage onAddToCart={addToCart} selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/payment-success" element={<PaymentSuccess onNavigate={(page) => window.location.href = `/${page}`} />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/dashboard" element={<UserDashboard />} />
-              <Route path="*" element={<Navigate to="/home" />} />
-            </Routes>
-          </div>
-
-          {showFooter && (
-            <Footer onNavigate={(page) => window.location.href = `/${page}`} />
-          )}
-
-          {isCartOpen && (
-            <Cart
-              items={cartItems}
-              onClose={() => setIsCartOpen(false)}
-              onUpdateQuantity={updateQuantity}
-              onRemoveItem={removeItem}
-            />
-          )}
-        </div>
+        <AppContent />
       </Router>
     </LikedProductsProvider>
   );

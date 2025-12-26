@@ -19,9 +19,9 @@ export default function DesktopMenu({ onNavigate, currentPage }: DesktopMenuProp
         <button
           key={link.id}
           onClick={() => onNavigate(link.id)}
-          className={`nav-link text-white font-bold ${
-            currentPage === link.id ? '' : ''
-          }`}
+          className={`relative font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 text-white/90 hover:text-white ${
+            currentPage === link.id ? 'text-white' : ''
+          } ${currentPage === link.id ? 'after:w-full' : 'hover:after:w-full'} after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300`}
         >
           {link.label}
         </button>

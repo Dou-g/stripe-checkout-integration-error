@@ -82,20 +82,19 @@ export default function CategoryGrid({ selectedCategory, onSelectCategory, onAdd
                       product={product}
                       onAddToCart={onAddToCart}
                     />
-                    {index === 2 && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                        <button
-                          onClick={() => openModal(category)}
-                          className="text-white font-semibold flex items-center"
-                        >
-                          Voir tous les produits
-                          <span className="ml-2">▼</span>
-                        </button>
-                      </div>
-                    )}
                   </div>
                 ))}
             </div>
+            {products.filter(product => product.category === category).length > 3 && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => openModal(category)}
+                  className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-semibold"
+                >
+                  Voir tous les produits
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>

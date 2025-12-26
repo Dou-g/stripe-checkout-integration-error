@@ -8,16 +8,25 @@ export async function createCheckoutSession(cartItems: CartItem[]): Promise<void
     const stripe = await stripePromise;
     if (!stripe) throw new Error('Stripe not loaded');
 
-    // Validation des données avant d'envoyer
+    // Validation et logging des prix avant envoi
+    console.log('=== DONNÉES ENVOYÉES À STRIPE ===');
     const formattedItems = cartItems.map(item => {
-      if (!item.price || isNaN(Number(item.price))) {
-        throw new Error(`Invalid price for item: ${item.name}`);
+      const price = Number(item.price);
+      if (!item.price || isNaN(price) || price <= 0) {
+        throw new Error(`Prix invalide pour l'article: ${item.name} (${item.price})`);
       }
+
+      console.log(`📦 ${item.name}: ${(price * 100).toLocaleString()} × ${item.quantity} = ${(price * 100 * item.quantity).toLocaleString()}`);
+
       return {
         ...item,
-        price: Number(item.price),
+        price: price, // Assure que c'est un nombre
       };
     });
+
+    const totalAmount = formattedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    console.log(`💰 TOTAL CALCULÉ: ${(totalAmount * 100).toLocaleString()}`);
+    console.log('=====================================');
 
     const response = await fetch('http://localhost:3000/api/create-checkout-session', {
       method: 'POST',

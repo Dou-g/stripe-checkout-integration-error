@@ -25,25 +25,31 @@ export default function MobileMenu({ isOpen, onClose, onNavigate, currentPage }:
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
-      <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose} />
-      <div className="fixed inset-y-0 left-0 w-64 bg-white shadow-xl p-6">
-        <div className="flex justify-end mb-6">
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="fixed inset-y-0 left-0 w-80 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 shadow-2xl p-6 border-r border-white/20">
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">BG</span>
+            </div>
+            <span className="text-xl font-bold text-white">Fashion</span>
+          </div>
+          <button onClick={onClose} className="p-2 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-colors duration-200">
             <X className="h-6 w-6" />
           </button>
         </div>
-        <nav className="space-y-4">
+        <nav className="space-y-2">
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => handleNavigation(link.id)}
-              className={`block w-full text-left px-4 py-2 rounded-md ${
+              className={`block w-full text-left px-4 py-4 rounded-xl transition-all duration-300 hover:scale-105 ${
                 currentPage === link.id
-                  ? 'bg-blue-50 text-blue-600'
-                  : 'text-gray-800 hover:bg-gray-50'
+                  ? 'bg-white/20 text-white shadow-md'
+                  : 'text-white/90 hover:bg-white/10 hover:text-white'
               }`}
             >
-              {link.label}
+              <span className="font-medium">{link.label}</span>
             </button>
           ))}
         </nav>

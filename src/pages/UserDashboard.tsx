@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MyPurchases from '../components/MyPurchases';
 import Profile from '../components/Profile';
 import OrderHistory from '../components/OrderHistory';
+import { useAuth } from '../hooks/useAuth';
 
 const UserDashboard: React.FC = () => {
   const [activeSection, setActiveSection] = useState('myPurchases');
+  const { isAuthenticated, userName } = useAuth();
+  const navigate = useNavigate();
+
+  // Protéger la page - rediriger vers login si non connecté
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
+
+  // Ne rien afficher si non authentifié (pendant la redirection)
+  if (!isAuthenticated) {
+    return null;
+  }
 
   const renderSection = () => {
     switch (activeSection) {
@@ -23,6 +39,7 @@ const UserDashboard: React.FC = () => {
     <div className="min-h-screen flex bg-gray-100">
       <div className="w-1/4 bg-white p-4 shadow-lg">
         <h2 className="text-xl font-bold mb-4">Tableau de bord</h2>
+        <p className="text-gray-600 mb-4">Bienvenue, {userName} !</p>
         <ul className="space-y-2">
           <li>
             <button

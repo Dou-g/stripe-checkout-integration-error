@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -7,6 +7,7 @@ import { Menu } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 import DesktopMenu from './DesktopMenu';
 import UserMenu from './UserMenu';
+import { useAuth } from '../hooks/useAuth';
 
 interface NavbarProps {
   cartItemsCount: number;
@@ -36,30 +37,31 @@ const slides = [
 
 export default function Navbar({ cartItemsCount, onCartClick, currentPage }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(true); // Initialisez à true pour afficher la navbar au chargement
+  const [isScrolled, setIsScrolled] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
+  const { userName, isAuthenticated, logout } = useAuth();
 
   const handleNavigate = (page: string) => {
     navigate(`/${page}`);
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (window.scrollY < lastScrollY) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
     }
     setLastScrollY(window.scrollY);
-  };
+  }, [lastScrollY]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, [handleScroll]);
 
   // Afficher la navbar lorsque le panier change
   useEffect(() => {
@@ -69,29 +71,37 @@ export default function Navbar({ cartItemsCount, onCartClick, currentPage }: Nav
   return (
     <> 
     {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-30 bg-black bg-opacity-70 transition-transform duration-300 ${isScrolled ? 'translate-y-0' : '-translate-y-full'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-30 transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 shadow-2xl' : '-translate-y-full'} bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 shadow-2xl border-b border-white/20 backdrop-blur-md`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16"> {/* Ajustez la hauteur ici */}
             <div className="flex items-center">
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="p-2 text-white lg:hidden hover:text-gray-200"
+                className="p-2 text-white lg:hidden hover:text-blue-200 hover:scale-110 transition-all duration-200"
               >
                 <Menu className="h-6 w-6" />
               </button>
-              <span 
-                onClick={() => handleNavigate('home')}
-                className="ml-2 text-2xl font-bold cursor-pointer text-white hover:text-gray-200 transition-colors"
-              >
-                <img src="/public/images/logo-bg.webp" alt="Logo" className="h-8 w-auto rounded-lg" /> {/* Remplacez par le chemin de votre logo */}
-              </span>
+              <div className="flex items-center space-x-3 ml-2">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-12 bg-white/20 hover:bg-white/30">
+                  <span className="text-xl font-bold text-white">BG</span>
+                </div>
+                <span 
+                  onClick={() => handleNavigate('home')}
+                  className="text-xl font-bold cursor-pointer transition-all duration-300 hover:scale-105 text-white hover:text-blue-200"
+                >
+                  Fashion
+                </span>
+              </div>
               <DesktopMenu onNavigate={handleNavigate} currentPage={currentPage} />
             </div>
             
             <UserMenu
+              key={`${isAuthenticated}-${userName}`} // Force re-render when auth state changes
               cartItemsCount={cartItemsCount}
               onCartClick={onCartClick}
-              onLoginClick={() => navigate('/login')}
+              userName={userName}
+              isAuthenticated={isAuthenticated}
+              onLogout={logout}
             />
           </div>
         </div>

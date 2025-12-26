@@ -15,7 +15,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   const isLiked = likedProducts.some((p) => p.id === product.id);
 
   const formatPrice = (price: number) => {
-    return `${price.toLocaleString()} XOF`;
+    return `${(price * 100).toLocaleString()}`;
   };
 
   return (
@@ -28,7 +28,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           >
             <img
               src={product.image}
-              alt={product.name}
+              alt={`${product.name} - Mode africaine authentique, ${product.description}`}
               className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             />
           </div>
@@ -80,6 +80,32 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           onAddToCart={onAddToCart}
         />
       )}
+
+      {/* SEO: Structured Data for Product */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": product.name,
+          "description": product.description,
+          "image": product.image,
+          "category": product.category,
+          "brand": {
+            "@type": "Brand",
+            "name": "BG Fashion"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": (product.price * 100).toString(),
+            "priceCurrency": "XOF",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "BG Fashion"
+            }
+          }
+        })}
+      </script>
     </>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { CartItem } from '../types';
 import { X, Minus, Plus } from 'lucide-react';
 import CheckoutButton from './Cart/CheckoutButton';
+import { products } from '../data/products';
 
 interface CartProps {
   items: CartItem[];
@@ -11,7 +12,18 @@ interface CartProps {
 }
 
 export default function Cart({ items, onClose, onUpdateQuantity, onRemoveItem }: CartProps) {
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  // Validation des prix du panier avec les prix originaux
+  const validatedItems = items.map(cartItem => {
+    const originalProduct = products.find(p => p.id === cartItem.id);
+    if (originalProduct && originalProduct.price !== cartItem.price) {
+      console.warn(`Prix différent détecté pour ${cartItem.name}: panier=${cartItem.price}, original=${originalProduct.price}`);
+      // Corrige automatiquement le prix
+      return { ...cartItem, price: originalProduct.price };
+    }
+    return cartItem;
+  });
+
+  const total = validatedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -27,7 +39,7 @@ export default function Cart({ items, onClose, onUpdateQuantity, onRemoveItem }:
   };
 
   const formatPrice = (price: number) => {
-    return `${price.toLocaleString()} XOF`;
+    return `${(price * 100).toLocaleString()}`;
   };
 
   return (
@@ -46,12 +58,12 @@ export default function Cart({ items, onClose, onUpdateQuantity, onRemoveItem }:
           </button>
         </div>
 
-        {items.length === 0 ? (
+        {validatedItems.length === 0 ? (
           <p className="text-center text-gray-500">Votre panier est vide</p>
         ) : (
           <>
             <div className="space-y-4 mb-6">
-              {items.map((item) => (
+              {validatedItems.map((item) => (
                 <div key={item.id} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
                   <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded" />
                   <div className="flex-1">
@@ -88,7 +100,7 @@ export default function Cart({ items, onClose, onUpdateQuantity, onRemoveItem }:
                 <span>Total</span>
                 <span>{formatPrice(total)}</span>
               </div>
-              <CheckoutButton items={items} />
+              <CheckoutButton items={validatedItems} />
             </div>
           </>
         )}

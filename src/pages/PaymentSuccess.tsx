@@ -1,9 +1,9 @@
-import React, { useEffect, Dispatch, SetStateAction } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 
 interface PaymentSuccessProps {
-  onNavigate: Dispatch<SetStateAction<string>>;
+  onNavigate: (page: string) => void;
 }
 
 const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ onNavigate }) => {
